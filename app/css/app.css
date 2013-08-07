@@ -19,10 +19,10 @@ body {
 }
 
 .wrap {
-  margin: 200px;
+  margin: 50px auto 200px 200px;
 }
 
-li, h1, p {
+li, h1, p, label {
   color: #fff;
 }
 
@@ -70,7 +70,7 @@ input .btn {
   padding: 0;
 }
 
-.done-true {
+.done-true, .done-true a {
   text-decoration: line-through;
   color: #666;
 }

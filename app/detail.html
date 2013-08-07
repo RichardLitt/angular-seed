@@ -1,22 +1,40 @@
 <form name="myForm">
   <div class="control-group" ng-class="{error: myForm.name.$invalid}">
-    <label>Name</label>
-    <input type="text" name="name" ng-model="project.name" required>
+    <label>Project</label>
+    <input type="text" name="project" ng-model="project.project" required>
     <span ng-show="myForm.name.$error.required" class="help-inline">
         Required</span>
   </div>
  
   <div class="control-group" ng-class="{error: myForm.site.$invalid}">
-    <label>Website</label>
-    <input type="url" name="site" ng-model="project.site" required>
+    <label>Task</label>
+    <input type="text" name="task" ng-model="project.task" required>
     <span ng-show="myForm.site.$error.required" class="help-inline">
         Required</span>
-    <span ng-show="myForm.site.$error.url" class="help-inline">
-        Not a URL</span>
+  </div>
+
+   <div class="control-group" ng-class="{error: myForm.site.$invalid}">
+    <label>Estimated Time</label>
+    <input type="text" name="estimated" ng-model="project.estimated" required>
+    <span ng-show="myForm.site.$error.required" class="help-inline">
+        Required</span>
   </div>
  
-  <label>Description</label>
-  <textarea name="description" ng-model="project.description"></textarea>
+  <label>Due</label>
+  <input type="date" name="due" ng-model="project.due">
+
+  <label>Time Frame</label>
+  <input type="text" name="timeFrame" ng-model="project.timeFrame">
+
+  <div class="control-group" ng-class="{error: myForm.site.$invalid}">
+    <label>Importance</label>
+    <input type="number" name="importance" ng-model="project.importance" min="0" max="10" required>
+    <span ng-show="myForm.site.$error.required" class="help-inline">
+        Required</span>
+  </div>
+
+  <label>Task Type</label>
+  <input type="text" name="type" ng-model="project.type" required>
  
   <br>
   <a href="#/" class="btn">Cancel</a>

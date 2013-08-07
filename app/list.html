@@ -1,4 +1,4 @@
-<input type="text" ng-model="search" class="search-query" placeholder="Search">
+<!-- <input type="text" ng-model="search" class="search-query" placeholder="Search">
 <table>
   <thead>
   <tr>
@@ -16,4 +16,22 @@
     </td>
   </tr>
   </tbody>
-</table>
+</table> -->
+
+      <!-- <form ng-submit="addTodo()">
+        <input id="text-input" type="text" ng-model="todoText"  
+               placeholder="add new todo here">
+        <input class="btn" type="submit" value="add">
+      </form> -->
+      <a href="#/new">Add Project</a>
+      <span id="list" ><p>{{remaining()}} of {{todos.length}} remaining</p></span>
+      <!-- [ <a href="" ng-click="archive()">archive</a> ] -->
+      <ul class="unstyled">
+        <li ng-repeat="(val, todo) in filterSecId(todos)" >
+          <input type="checkbox" ng-model="todo.done" ng-click="saveChange(todo)">
+          <span class="done-{{todo.done}}">
+            {{todo.importance}} <strong><a href="#/edit/{{val}}">{{todo.project}}</a></strong> - {{todo.task}} <!-- {{todo.estimated}} {{todo.timeFrame}}  {{todo.type}} -->
+          </span>
+
+        </li>
+      </ul>
