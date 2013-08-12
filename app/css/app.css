@@ -19,16 +19,41 @@ body {
 }
 
 .wrap {
-  margin: 50px auto 200px 200px;
+  margin: 50px auto 300px;
 }
 
-li, h1, p, label {
+#logo a {
+  margin: 10px 100px;
+  font-style: italic;
+  font-family: Helvetica;
+  font-weight: 100;
+  letter-spacing: -7px;
+  text-decoration: none;
+}
+
+li, h1, h2, h3, p, label {
   color: #fff;
 }
 
-#text-input  {
-  margin: 5px auto;
+#search {
+  margin-bottom: 10px;
+}
+
+#text-input {
+  height: 100px;
+  vertical-align: text-top;
+}
+
+#importance {
   height: 30px;
+}
+
+#archive-box {
+  margin: 3px auto;
+}
+
+#input-bottom-line {
+  width: 206px;
 }
 
 input .btn {

@@ -2,22 +2,22 @@
 
 /* Filters */
 
-angular.module('lean.filters', []).
+angular.module('lean.filters', [])
 
-  filter('interpolate', ['version', function(version) {
-    return function(text) {
-      return String(text).replace(/\%VERSION\%/mg, version);
-    }
-  }])
-// http://stackoverflow.com/questions/14788652/how-to-filter-key-value-with-ng-repeat-in-angularjs
-/*  .filter('with', function() {
-	  return function(items, field) {
-	        var result = {};
-	        angular.forEach(items, function(value, key) {
-	            if (!value.hasOwnProperty(field)) {
-	                result[key] = value;
-	            }
-	        });
-	        return result;
-	    };
-	}); */
+ 	.filter('interpolate', ['version', function(version) {
+	    return function(text) {
+	      return String(text).replace(/\%VERSION\%/mg, version);
+	    }
+	}])
+
+	.filter('orderByImportance', function() {
+	  return function(obj) {
+	    var array = [];
+	    Object.keys(obj).forEach(function(key) {
+	      array.push(obj[key]);
+	    });
+	    array.sort(function(a, b) {
+	    	return a.importance - b.importance;
+	    }).reverse();
+	    return array;
+	}});

@@ -1,15 +1,36 @@
- var listCtrl = function ($scope, $location, $routeParams, $timeout, Projects, angularFire, fbURL) {
+var listCtrl = function ($scope, $filter, $location, $routeParams, $timeout, Projects, angularFire, fbURL) {
   angularFire(fbURL + 'Projects/', $scope, 'remote', {}).
   then(function() {
     $scope.todos = angular.copy($scope.remote);
+    var orderByImportance = $filter('orderByImportance');
 
+    $scope.focus = function(todo) {
+      $scope.focused = todo;
+    }
+
+    $scope.detailShow = function(){
+      if ($scope.focused) {
+        return $scope.focused !== '';
+      }
+    }
+    
     $scope.filterSecId = function(items) {
-      console.log(items);
       var result = {};
       angular.forEach(items, function(value, key) {
-        result[key] = value;
+        if (value.archive != false) {
+          result[key] = value;
+          result[key].id = key;
+        }
       });
-      console.log(result);
+      $scope.todos = result;
+      return orderByImportance($scope.todos);
+    }
+
+    $scope.filterKey = function(items) {
+      var result = new Array();
+      angular.forEach(items, function(key, value) {
+        result.push(value);
+      });
       return result;
     }
 
@@ -19,7 +40,9 @@
     }
 
     $scope.saveChange = function(todo){
-      angular.equals($scope.remote, $scope.project);      
+      var d = new Date()
+      todo.end = d;
+      angular.equals($scope.remote, $scope.todos);      
       $scope.remote = angular.copy($scope.todos);
     }
 
@@ -34,28 +57,39 @@
     $scope.remaining = function() {
       var count = 0;
       angular.forEach($scope.todos, function(todo) {
-        count += todo.done ? 0 : 1;
+        count += todo.done && ! todo.archive ? 0 : 1;
       });
       return count;
     }
 
+    $scope.unarchivedCount = function() {
+      var count = 0;
+      angular.forEach($scope.todos, function(todo) {
+        if (!todo.archive) {
+          count += 1;
+        };
+      })
+      return count
+    }
+
+    $scope.archive = function() {
+      var oldTodos = $scope.todos;
+      $scope.todos = {};
+      angular.forEach(oldTodos, function(value, key) {
+        if (!value.done) {
+          $scope.todos[key] = value;
+        }
+      }, $scope.todos);
+      $scope.remote = angular.copy($scope.todos);
+    };
+
     $scope.endTodo = function($scope, $location, $routeParams, angularFire, fbURL) {
-    angularFire(fbURL + $routeParams, $scope, 'remote', {}).
-    then(function() {
-      console.log($scope, 'hello');
-      $scope.todo = angular.copy($scope.remote);
-      $scope.todo.done == true;
-      Projects.push($scope);
-      /* $scope.project = angular.copy($scope.remote);
-      $scope.project.$id = $routeParams.projectId;
-      $scope.remote.done = angular.copy($scope.todo); */
-      // $scope.project.push($scope.project.todo);
-      // $scope.project.push(todo.done);
-    });
-      /*$scope.todo = angular.copy($scope.remote);
-      $scope.save = function() {
-        return angular.equals($scope.remote, $scope.todo);
-      }*/
+      angularFire(fbURL + $routeParams, $scope, 'remote', {}).
+      then(function() {
+        $scope.todo = angular.copy($scope.remote);
+        $scope.todo.done == true;
+        Projects.push($scope);
+      });
     };
 
   });
