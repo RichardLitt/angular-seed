@@ -1,7 +1,7 @@
 <div class="span5 offset1">
   <p><a href="#/new"><i class="icon-plus-sign"></i> Add Project</a></p>
   <input type="text" ng-model="search" class="search-query" id="search" placeholder="Search">
-  <span id="list" ><p>{{remaining()}} of {{unarchivedCount()}} remaining (<a ng-click="archive()" href="#/">Archive</a>)</p></span>
+  <span id="list" ><p>{{remaining()}} of {{unarchivedCount()}} remaining (<a ng-click="archive()" href="#/user/:userId">Archive</a>)</p></span>
   <!-- [ <a href="" ng-click="archive()">archive</a> ] -->
   <ul class="unstyled">
     <li ng-repeat="(key, todo) in filterSecId(todos) | filter:search" >

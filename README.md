@@ -4,7 +4,9 @@ This is a time tracking and time management program. It is currently in develope
 
 Forked from angular/angular-seed. Server using Firebase. Run on Node and AngularJS. 
 
-### Running the app during development
+### Original Readme from angular/angular-seed
+
+#### Running the app during development
 
 You can pick one of these options:
 
@@ -15,7 +17,7 @@ Then navigate your browser to `http://localhost:<port>/app/index.html` to see th
 your browser.
 
 
-### Running the app in production
+#### Running the app in production
 
 This really depends on how complex is your app and the overall infrastructure of your system, but
 the general rule is that all you need in production are all the files under the `app/` directory.
@@ -30,7 +32,7 @@ applicable. Usually this is done by hosting the files by the backend server or t
 reverse-proxying the backend server(s) and a webserver(s).
 
 
-### Running unit tests
+#### Running unit tests
 
 We recommend using [jasmine](http://pivotal.github.com/jasmine/) and
 [Karma](http://karma-runner.github.io) for your unit tests/specs, but you are free
@@ -44,7 +46,7 @@ or remote browser.
 * to run or re-run tests just change any of your source or test javascript files
 
 
-### End to end testing
+#### End to end testing
 
 Angular ships with a baked-in end-to-end test runner that understands angular, your app and allows
 you to write your tests with jasmine-like BDD syntax.
@@ -62,22 +64,8 @@ info.
   * run the tests from console with [Karma](http://karma-runner.github.io) via
     `scripts/e2e-test.sh` or `script/e2e-test.bat`
 
-### Continuous Integration
 
-CloudBees have provided a CI/deployment setup:
-
-<a href="https://grandcentral.cloudbees.com/?CB_clickstart=https://raw.github.com/CloudBees-community/angular-js-clickstart/master/clickstart.json"><img src="https://d3ko533tu1ozfq.cloudfront.net/clickstart/deployInstantly.png"/></a>
-
-If you run this, you will get a cloned version of this repo to start working on in a private git repo, 
-along with a CI service (in Jenkins) hosted that will run unit and end to end tests in both Firefox and Chrome.
-
-### Receiving updates from upstream
-
-When we upgrade angular-seed's repo with newer angular or testing library code, you can just
-fetch the changes and merge them into your project with git.
-
-
-## Directory Layout
+#### Directory Layout
 
     app/                --> all of the files to be used in production
       css/              --> css files
@@ -125,7 +113,3 @@ fetch the changes and merge them into your project with git.
         directivessSpec.js      --> specs for directives
         filtersSpec.js          --> specs for filters
         servicesSpec.js         --> specs for services
-
-## Contact
-
-For more information on AngularJS please check out http://angularjs.org/

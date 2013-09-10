@@ -24,7 +24,7 @@ var editCtrl = function ($scope, $location, $routeParams, angularFire, fbURL) {
       // The key of the edit array is the timestamp of when it was changed.
       $scope.project.edited[currentEdit] = oldProject;
       $scope.remote = angular.copy($scope.project);
-      $location.path('/');
+      $location.path('/user/:userId');
     };
   });
 }
