@@ -1,4 +1,4 @@
-var oauth = function($scope, $q, $rootScope, angularFire, myAuthService) {
+var oauth = function($scope, $q, $rootScope, $location, angularFire, myAuthService) {
     $scope.signin = function() {
         var user1 = $scope.cred.user;
         var pass1 = $scope.cred.password;

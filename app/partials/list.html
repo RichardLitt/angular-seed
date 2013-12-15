@@ -1,10 +1,11 @@
-<div class="span5 offset1">
-  <p><a href="#/new"><i class="icon-plus-sign"></i> Add Project</a></p>
-  <input type="text" ng-model="search" class="search-query" id="search" placeholder="Search">
-  <span id="list" ><p>{{remaining()}} of {{unarchivedCount()}} remaining (<a ng-click="archive()" href="#/user/:userId">Archive</a>)</p></span>
+<div class="col-sm-6 content">
+  
+    <input type="text" ng-model="search" id="search" class="form-control" placeholder="Search">
+    <span id="remaining-text"><p>{{remaining()}} of {{unarchivedCount()}} remaining (<a ng-click="archive()" href="#/user/:userId">Archive</a>)</p></span>
+  
   <!-- [ <a href="" ng-click="archive()">archive</a> ] -->
-  <ul class="unstyled">
-    <li ng-repeat="(key, todo) in filterSecId(todos) | filter:search" >
+  <ul id="projects">
+    <li class="project" ng-repeat="(key, todo) in filterSecId(todos) | filter:search" >
       <input type="checkbox" ng-model="todo.done" ng-click="saveChange(todo)">
       <span class="done-{{todo.done}}">
         <strong><a ng-click="focus(todo)">
@@ -14,7 +15,7 @@
     </li>
   </ul>
 </div>
-<div class="span5 offset1" ng-show="detailShow()">
+<div class="col-sm-5 col-sm-offset-1 content" ng-show="detailShow()">
   <h2>{{focused.project}}</h2>
   <h3>{{focused.task}}</h3>
   <p ng-show="focused.note">Notes: {{focused.note}}</p>
@@ -28,4 +29,5 @@
   <!-- <p>Archived: {{focused.archived}}</p> -->
   <hr />
   <a href="#/edit/{{focused.id}}" class="btn btn-primary">Edit</a>
+  <a href="#" ng-click="unfocus(focused.id)" class="btn btn-default">Close</a>
 </div>

@@ -1,7 +1,7 @@
-var login = function($scope) {
+var login = function($scope, $rootScope, $location) {
 	console.log('Working.');
 
-	$scope.gitLogin = function ($scope, $location, $routeParams) {
+	$scope.gitLogin = function ($scope, $location, $rootScope, $routeParams) {
 		var chatRef = new Firebase('https://lean.firebaseio.com');
 		var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
 		  if (error) {
@@ -11,11 +11,15 @@ var login = function($scope) {
 		    // user authenticated with Firebase
 		    console.log('User ID: ' + user.id + ', Provider: ' + user.provider);
 		  } else {
-			console.log('Logged out.');
 		    // user is logged out
+			console.log('Logged out.');
+		    $rootScope.user = {
+		    	id: false
+		    };
 		  }
 		});
 		auth.login('github')
 	};
-}
+
+};
 

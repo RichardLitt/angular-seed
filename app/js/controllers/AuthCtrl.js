@@ -1,14 +1,13 @@
 'use strict';
 
-app.
-
-controller('AuthCtrl', [
+var AuthCtrl = [
     '$scope',
+    '$rootScope',
     '$location',
     'angularFire',
     'fireFactory',
 
-    function AuthCtrl($scope, $location, angularFire, fireFactory) {
+    function AuthCtrl($scope, $rootScope, $location, angularFire, fireFactory) {
 
         $scope.name = 'AuthCtrl';
 
@@ -16,7 +15,7 @@ controller('AuthCtrl', [
             usersurl = baseurl + '/users/';
 
         $scope.usersRef = angularFire(usersurl, $scope, 'users', {});
-
+        $rootScope.usersRef = $scope.usersRef;
 
         // FirebaseAuth callback
         $scope.authCallback = function(error, user) {
@@ -64,7 +63,7 @@ controller('AuthCtrl', [
             var options = {
                 'rememberMe': true
             };
-            provider = 'twitter';
+            provider = 'github';
 
             if ($scope.token) {
                 console.log('login with token', $scope.token);
@@ -81,4 +80,4 @@ controller('AuthCtrl', [
             $location.path('/');
         };
     }
-]);
+];

@@ -27,11 +27,11 @@ app.
     function($routeProvider) {
     $routeProvider.
       // Commenting this out to check and see if we can not redirect to login afterwords...
-      when('/', {controller:'AuthCtrl' /*, templateUrl:'partials/login.html' */}).
+      when('/', {controller:AuthCtrl}).
       when('/user/:userId', {controller:listCtrl, templateUrl:'partials/list.html'}).
-      when('/login', {controller:login, templateUrl:'partials/login.html'}).
       when('/edit/:projectId', {controller:editCtrl, templateUrl:'partials/detail.html'}).
       when('/new', {controller:createCtrl, templateUrl:'partials/detail.html'}).
+      // when('/knight', {controller:knightCtrl, templateUrl:'partials/knight.html'}).
       otherwise({redirectTo:'/'});
     }
   ]);

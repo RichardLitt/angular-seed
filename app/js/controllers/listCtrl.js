@@ -1,11 +1,17 @@
-var listCtrl = function ($scope, $filter, $location, $routeParams, $timeout, Projects, angularFire, fbURL) {
+var listCtrl = function ($scope, $rootScope, $filter, $location, $routeParams, $timeout, Projects, angularFire, fbURL) {
   angularFire(fbURL + 'Projects/', $scope, 'remote', {}).
   then(function() {
+
     $scope.todos = angular.copy($scope.remote);
+
     var orderByImportance = $filter('orderByImportance');
 
     $scope.focus = function(todo) {
       $scope.focused = todo;
+    }    
+
+    $scope.unfocus = function(todo) {
+      $scope.focused = '';
     }
 
     $scope.detailShow = function(){
