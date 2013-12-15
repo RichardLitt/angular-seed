@@ -1,1 +1,2 @@
-RewriteRule */app/index.html /index.html
+RewriteEngine on
+RewriteRule ^/app/index.html / [R]
