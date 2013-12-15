@@ -1,2 +1,2 @@
 RewriteEngine on
-RewriteRule ^/app/index.html / [R]
+RewriteRule /app/index.html#(.*) http://lean.burntfen.com/$1 [P]
