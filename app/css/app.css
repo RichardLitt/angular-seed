@@ -173,7 +173,7 @@ ul#projects {
   margin-top: 50px;
 }
 
-#about p {
+#about p, #about p a {
   color: #ffffff;
 }
 
