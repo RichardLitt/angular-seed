@@ -1,80 +1,50 @@
 <!doctype html>
 <html lang="en" ng-app="lean">
-<head>
-  <meta charset="utf-8">
-  <title>Lean</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular-resource.min.js"></script>
-  <script src="https://cdn.firebase.com/v0/firebase.js"></script>
-  <script src="http://firebase.github.io/angularFire/angularFire.js"></script>
-  <script type='text/javascript' src='https://cdn.firebase.com/v0/firebase-simple-login.js'></script>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+  <head>
+    <meta charset="utf-8">
+    <title>Lean</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular-resource.min.js"></script>
+    <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+    <script src="http://firebase.github.io/angularFire/angularFire.js"></script>
+    <script type='text/javascript' src='https://cdn.firebase.com/v0/firebase-simple-login.js'></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
 
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/app.css"/>
-  </head>
-<body>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/app.css"/>
+    <link rel="stylesheet" href="css/sticky-footer.css"/>
+    </head>
+  <body>
 
-<nav class="navbar navbar-default" role="navigation" ng-controller="AuthCtrl">
-  <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="#/user/{{user.id}}" id="logo">Lean</a>
-  </div>
+    <navbar></navbar>
 
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav">
-      <!-- <div id="loginout" loginout></div> -->
-      <a class="btn btn-default navbar-btn" ng-click="login()" ng-show="!userId">Sign in</a>
-      <a class="btn btn-default navbar-btn" ng-click="logout()" ng-show="userId">Log out</a>
-      <a class="btn btn-default navbar-btn" ng-controller="listCtrl" href="#/new"><i class="fa fa-plus-circle"></i> Add Project</a>
-    </ul>
-  </div><!-- /.navbar-collapse -->
-</nav>
-
-<!--   <div class="jumbotron">
-    <div class="container">
-      
-    </div>
-  </div> -->
-
-
-  <div class="wrap">
-    <!--
-
-    We've added in a shit ton of stuff. Directives, and AuthCtrl. login can probably be deprecated. 
-
-    http://stackoverflow.com/questions/16424203/correct-way-to-use-firebaseauthclient-and-angularjs -->
-  
-    <div class="container">
-      <div class="row" ng-view>
+    <div class="wrap" >
+      <div class="container" ng-view>
+      </div>
+      <div class="push">
       </div>
     </div>
-  </div>
+    <footer class="footer">
+      <a href="/">About</a>
+    </footer>
 
-  <!-- <script src="lib/angular/angular.js"></script> -->
-  <script src="js/controllers/listCtrl.js"></script>
-  <script src="js/controllers/editCtrl.js"></script>
-  <script src="js/controllers/createCtrl.js"></script>
-  <script src="js/controllers/navbarCtrl.js"></script>
-  <script src="js/controllers/AuthCtrl.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/controllers/AuthCtrl.js"></script>
-  <script src="js/services.js"></script>
-  <script src="js/filters.js"></script>
-  <script src="js/directives.js"></script>
-</body>
+    <!-- <script src="lib/angular/angular.js"></script> -->
+    <script src="js/controllers/listCtrl.js"></script>
+    <script src="js/controllers/editCtrl.js"></script>
+    <script src="js/controllers/createCtrl.js"></script>
+    <script src="js/controllers/AuthCtrl.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/directives.js"></script>
+    <script src="vendor/spin.min.js"></script>
+    <script src="vendor/angular-spinner-master/angular-spinner.js"></script>
+  </body>
 </html>

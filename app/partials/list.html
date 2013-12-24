@@ -1,33 +1,40 @@
-<div class="col-sm-6 content">
-  
-    <input type="text" ng-model="search" id="search" class="form-control" placeholder="Search">
-    <span id="remaining-text"><p>{{remaining()}} of {{unarchivedCount()}} remaining (<a ng-click="archive()" href="#/user/:userId">Archive</a>)</p></span>
-  
-  <!-- [ <a href="" ng-click="archive()">archive</a> ] -->
-  <ul id="projects">
-    <li class="project" ng-repeat="(key, todo) in filterSecId(todos) | filter:search" >
-      <input type="checkbox" ng-model="todo.done" ng-click="saveChange(todo)">
-      <span class="done-{{todo.done}}">
-        <strong><a ng-click="focus(todo)">
-          {{todo.project}}</a></strong> - {{todo.task}}.
-      </span>
-
-    </li>
-  </ul>
+<div class="row spinner-container" ng-show="spinner">
+  <div class="col-xs-12">
+    <span us-spinner="{top: center}" class="spinner"></span>  
+  </div>
 </div>
-<div class="col-sm-5 col-sm-offset-1 content" ng-show="detailShow()">
-  <h2>{{focused.project}}</h2>
-  <h3>{{focused.task}}</h3>
-  <p ng-show="focused.note">Notes: {{focused.note}}</p>
-  <p ng-show="focused.due">Due: {{focused.due}}</p>
-  <p ng-show="focused.timeframe">Timeframe: {{focused.timeframe}}</p>
-  <p>Importance {{focused.importance}}</p>
-  <p>Type: {{focused.type}}</p>
-  <p ng-show="focused.start">Start: {{focused.start | date:'EEE, MM/dd @ h:mma'}}</p>
-  <p ng-show="focused.edited">Edited: <ul><li ng-repeat="(key, value) in filterKey(focused.edited)">{{value | date:'EEE, MM/dd @ h:mma'}}</li></ul></p>
-  <p class="ng-show:focused.end; ng-show:focused.done;">Finished: {{focused.end | date:'EEE, MM/dd @ h:mma'}}</p>
-  <!-- <p>Archived: {{focused.archived}}</p> -->
-  <hr />
-  <a href="#/edit/{{focused.id}}" class="btn btn-primary">Edit</a>
-  <a href="#" ng-click="unfocus(focused.id)" class="btn btn-default">Close</a>
+<div class="row" ng-show="!spinner">
+  <div class="col-sm-6 content">
+    
+      <input type="text" ng-model="search" id="search" class="form-control" placeholder="Search">
+      <span id="remaining-text"><p>{{remaining()}} of {{unarchivedCount()}} remaining (<a ng-click="archive()" href="#/user/:userId">Archive</a>)</p></span>
+    
+    <!-- [ <a href="" ng-click="archive()">archive</a> ] -->
+    <ul id="projects">
+      <li class="project" ng-repeat="(key, todo) in filterSecId(todos) | filter:search" >
+        <input type="checkbox" ng-model="todo.done" ng-click="saveChange(todo)">
+        <span class="done-{{todo.done}}">
+          <strong><a ng-click="focus(todo)">
+            {{todo.project}}</a></strong> - {{todo.task}}.
+        </span>
+
+      </li>
+    </ul>
+  </div>
+  <div class="col-sm-5 col-sm-offset-1 content" ng-show="detailShow()">
+    <h2>{{focused.project}}</h2>
+    <h3>{{focused.task}}</h3>
+    <p ng-show="focused.note">Notes: {{focused.note}}</p>
+    <p ng-show="focused.due">Due: {{focused.due}}</p>
+    <p ng-show="focused.timeframe">Timeframe: {{focused.timeframe}}</p>
+    <p>Importance {{focused.importance}}</p>
+    <p>Type: {{focused.type}}</p>
+    <p ng-show="focused.start">Start: {{focused.start | date:'EEE, MM/dd @ h:mma'}}</p>
+    <p ng-show="focused.edited">Edited: <ul><li ng-repeat="(key, value) in filterKey(focused.edited)">{{value | date:'EEE, MM/dd @ h:mma'}}</li></ul></p>
+    <p class="ng-show:focused.end; ng-show:focused.done;">Finished: {{focused.end | date:'EEE, MM/dd @ h:mma'}}</p>
+    <!-- <p>Archived: {{focused.archived}}</p> -->
+    <hr />
+    <a href="#/edit/{{focused.id}}" class="btn btn-primary">Edit</a>
+    <a href="" ng-click="unfocus(focused.id)" class="btn btn-default">Close</a>
+</div>
 </div>

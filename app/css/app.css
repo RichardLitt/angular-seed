@@ -31,6 +31,7 @@ body {
   background-image: none;
   background-color: rgba(255,255,255,.7);
   margin-bottom: 0px;
+  border-radius: 0px;
 }
 
 .navbar-form {
@@ -149,4 +150,36 @@ ul#projects {
 .done-true, .done-true a {
   text-decoration: line-through;
   color: #666;
+}
+
+.spinner-container {
+  margin: 0px auto;
+  width: 100%;
+}
+
+.spinner {
+  width: 20%;
+  margin-top: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#about {
+  text-align: center;
+}
+
+#about .btn {
+  margin-top: 50px;
+}
+
+#about p {
+  color: #ffffff;
+}
+
+#about h1 {
+  margin-top: 10%;
+  font-size: 100px;
+  letter-spacing: -16px;
+  color: #ffffff;
 }

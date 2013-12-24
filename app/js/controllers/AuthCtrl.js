@@ -6,16 +6,24 @@ var AuthCtrl = [
     '$location',
     'angularFire',
     'fireFactory',
+    '$route',
 
-    function AuthCtrl($scope, $rootScope, $location, angularFire, fireFactory) {
+    function AuthCtrl($scope, $rootScope, $location, angularFire, fireFactory, $route) {
 
         $scope.name = 'AuthCtrl';
+
+        $scope.spinner = true;
 
         var baseurl = 'https://lean.firebaseio.com',
             usersurl = baseurl + '/users/';
 
-        $scope.usersRef = angularFire(usersurl, $scope, 'users', {});
-        $rootScope.usersRef = $scope.usersRef;
+        //$scope.usersRef = angularFire(usersurl, $scope, 'users', {});
+
+        $rootScope.$watch('user', function() {
+            if ($rootScope.user) {
+                $location.url('/u/' + $rootScope.user.username);
+            }
+        });
 
         // FirebaseAuth callback
         $scope.authCallback = function(error, user) {
@@ -25,10 +33,21 @@ var AuthCtrl = [
                     $location.path('/');
                 }*/
             } else if (user) {
-                console.log('Logged In', $scope);
+
+                $scope.spinner = false;
+
+                $scope.$apply( 
+                    $rootScope.user = user 
+                );
+
+                $rootScope.user = $scope.user;
+                
+                // console.log('Logged In', $scope);
+                
                 // Store the auth token
                 localStorage.setItem('token', user.firebaseAuthToken);
                 $scope.isLoggedIn = true;
+
 
                 $scope.userId = user.id;
 
@@ -48,15 +67,15 @@ var AuthCtrl = [
                     $scope.userRef.set(info); // set user child data once
                 });
 
-                $location.path('/user/' + $scope.userRef.name());
             } else {
                 localStorage.clear();
+                $scope.$apply( $rootScope.user = false );
                 $scope.isLoggedIn = false;
                 $location.path('/');
             }
         };
 
-        var authClient = new FirebaseAuthClient(fireFactory.firebaseRef('users'), $scope.authCallback);
+        var authClient = new FirebaseSimpleLogin(fireFactory.firebaseRef(''), $scope.authCallback);
 
         $scope.login = function(provider) {
             $scope.token = localStorage.getItem('token');
@@ -67,11 +86,12 @@ var AuthCtrl = [
 
             if ($scope.token) {
                 console.log('login with token', $scope.token);
-                fireFactory.firebaseRef('users').auth($scope.token, $scope.authCallback);
+                fireFactory.firebaseRef('').auth($scope.token, $scope.authCallback);
             } else {
                 console.log('login with authClient');
                 authClient.login(provider, options);
             }
+                        
         };
 
         $scope.logout = function() {
@@ -79,5 +99,8 @@ var AuthCtrl = [
             authClient.logout();
             $location.path('/');
         };
+
+        console.log($scope);
+
     }
 ];
