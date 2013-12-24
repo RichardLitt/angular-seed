@@ -6,8 +6,9 @@ var AuthCtrl = [
     '$location',
     'angularFire',
     'fireFactory',
+    '$route',
 
-    function AuthCtrl($scope, $rootScope, $location, angularFire, fireFactory) {
+    function AuthCtrl($scope, $rootScope, $location, angularFire, fireFactory, $route) {
 
         $scope.name = 'AuthCtrl';
 
@@ -48,6 +49,8 @@ var AuthCtrl = [
                     $scope.userRef.set(info); // set user child data once
                 });
 
+                $rootScope.user = user;
+
                 $location.path('/user/' + $scope.userRef.name());
             } else {
                 localStorage.clear();
@@ -72,6 +75,7 @@ var AuthCtrl = [
                 console.log('login with authClient');
                 authClient.login(provider, options);
             }
+            $route.reload();
         };
 
         $scope.logout = function() {

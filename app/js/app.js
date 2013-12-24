@@ -6,11 +6,15 @@ var app = window.app = angular.module('lean', ['firebase', 'lean.filters', 'lean
 // Declare app level module which depends on filters, and services
 app.
 
-  value('fbURL', 'https://lean.firebaseio.com/').
-  factory('Projects', function(angularFireCollection, fbURL) {
-    fbURL = fbURL + 'Projects/';
-    return angularFireCollection(fbURL);
-  }).
+  value('fbURL', 'https://lean.firebaseio.com/users/').
+  // factory('projects', ['$rootScope', function($rootScope, angularFireCollection, fbURL) { 
+  //   if ($rootScope.user) {
+  //     fbURL = fbURL + $rootScope.user.id + '/projects/';
+  //     return angularFireCollection(fbURL);
+  //   } else {
+  //     console.log('Not authenticated');
+  //   }
+  // }]).
   factory('fireFactory', [
     function fireFactory() {
         return {
@@ -26,12 +30,10 @@ app.
 
     function($routeProvider) {
     $routeProvider.
-      // Commenting this out to check and see if we can not redirect to login afterwords...
       when('/', {controller:AuthCtrl}).
       when('/user/:userId', {controller:listCtrl, templateUrl:'partials/list.html'}).
       when('/edit/:projectId', {controller:editCtrl, templateUrl:'partials/detail.html'}).
       when('/new', {controller:createCtrl, templateUrl:'partials/detail.html'}).
-      // when('/knight', {controller:knightCtrl, templateUrl:'partials/knight.html'}).
       otherwise({redirectTo:'/'});
     }
   ]);
