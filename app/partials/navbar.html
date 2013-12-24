@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default" role="navigation" ng-show="user.id">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -14,8 +14,8 @@
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
       <!-- <div id="loginout" loginout></div> -->
-      <a class="btn btn-default navbar-btn" ng-click="login()" ng-show="!user.id"><i class="fa fa-github"></i> Sign in</a>
-      <a class="btn btn-default navbar-btn" ng-click="logout()" ng-show="user.id">Log out</a>
+<!--       <a class="btn btn-default navbar-btn" ng-click="login()" ng-show="!user.id && !spinner"><i class="fa fa-github"></i> Sign in</a>
+ -->      <a class="btn btn-default navbar-btn" ng-click="logout()" ng-show="user.id">Log out</a>
       <a class="btn btn-default navbar-btn" href="#/new" ng-show="user.id"><i class="fa fa-plus-circle"></i> Add Project</a>
     </ul>
   </div><!-- /.navbar-collapse -->

@@ -1,5 +1,7 @@
 var listCtrl = function ($scope, $rootScope, $filter, $location, $routeParams, $timeout, angularFire, fbURL) {
   
+  $scope.spinner = true;
+
   $rootScope.$watch('user', function() {
     if ($rootScope.user) {
       
@@ -7,6 +9,8 @@ var listCtrl = function ($scope, $rootScope, $filter, $location, $routeParams, $
       
       angularFire(fbURL + $scope.user.id + '/projects/', $scope, 'remote', {}).
         then(function() {
+
+          $scope.spinner = false;
 
           $scope.todos = angular.copy($scope.remote);
 
