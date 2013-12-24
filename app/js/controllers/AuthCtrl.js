@@ -16,7 +16,13 @@ var AuthCtrl = [
             usersurl = baseurl + '/users/';
 
         $scope.usersRef = angularFire(usersurl, $scope, 'users', {});
-        $rootScope.usersRef = $scope.usersRef;
+        //$rootScope.usersRef = $scope.usersRef;
+
+        $rootScope.$watch('user', function() {
+            if ($rootScope.user) {
+                $location.url('/u/' + $rootScope.user.username);
+            }
+        });
 
         // FirebaseAuth callback
         $scope.authCallback = function(error, user) {
@@ -26,10 +32,13 @@ var AuthCtrl = [
                     $location.path('/');
                 }*/
             } else if (user) {
+                $scope.$apply( $rootScope.user = user );
+                $rootScope.user = $scope.user;
                 console.log('Logged In', $scope);
                 // Store the auth token
                 localStorage.setItem('token', user.firebaseAuthToken);
                 $scope.isLoggedIn = true;
+
 
                 $scope.userId = user.id;
 
@@ -49,9 +58,6 @@ var AuthCtrl = [
                     $scope.userRef.set(info); // set user child data once
                 });
 
-                $rootScope.user = user;
-
-                $location.path('/user/' + $scope.userRef.name());
             } else {
                 localStorage.clear();
                 $scope.isLoggedIn = false;
@@ -75,13 +81,15 @@ var AuthCtrl = [
                 console.log('login with authClient');
                 authClient.login(provider, options);
             }
-            $route.reload();
+                        
         };
 
         $scope.logout = function() {
             localStorage.clear();
             authClient.logout();
+            $scope.$apply( $scope.user = null );
             $location.path('/');
         };
+
     }
 ];
