@@ -100,7 +100,5 @@ var AuthCtrl = [
             $location.path('/');
         };
 
-        console.log($scope);
-
     }
 ];
