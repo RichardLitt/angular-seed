@@ -1,7 +1,7 @@
 body {
   /* fallback */
   background-color: #f9f9f9;
-  background: #fff url('../img/truro_right.jpg') no-repeat bottom center;
+  background: #5986be url('../img/truro_right.jpg') no-repeat bottom center;
   background-size: 100% auto;
   background-attachment: fixed;
 
@@ -20,6 +20,7 @@ body {
   /* Opera 11.10+ */
   /* background: -o-linear-gradient(left, #2F2727, #49cf35); */
 }
+
 
 /*.jumbotron {
 
@@ -182,4 +183,14 @@ ul#projects {
   font-size: 100px;
   letter-spacing: -16px;
   color: #ffffff;
+}
+
+
+@media (max-width: 768px) {
+  body { background-size: cover; }
+  #search { width: 100%; }
+  .navbar {
+    text-align: center;
+  }
+  #remaining-text { margin: 0px; }
 }
