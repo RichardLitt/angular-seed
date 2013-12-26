@@ -1,32 +1,12 @@
-* {
-  margin: 0; }
+@import 'sticky-footer';
 
-html, body {
-  height: 100%; }
-
-.wrap {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto-80px;
-  /* the bottom margin is the negative value of the footer's height */ }
-
-footer, .push {
-  height: 80px;
-  /* '.push' must be the same height as 'footer' */ }
-
-/*
-
-Sticky Footer by Ryan Fait
-http://ryanfait.com/
-
-*/
 body {
   /* fallback */
   background-color: #f9f9f9;
-  background: #5986be url("../img/truro_right.jpg") no-repeat bottom center;
+  background: #5986be url('../img/truro_right.jpg') no-repeat bottom center;
   background-size: cover;
   background-attachment: fixed;
+
   /* Safari 4-5, Chrome 1-9 */
   /* background: -webkit-gradient(linear, left top, right top, from(#49cf35), to(#2F2727));
 
@@ -40,26 +20,31 @@ body {
   /* background: -ms-linear-gradient(left, #2F2727, #49cf35);
 
   /* Opera 11.10+ */
-  /* background: -o-linear-gradient(left, #2F2727, #49cf35); */ }
+  /* background: -o-linear-gradient(left, #2F2727, #49cf35); */
+}
 
 .navbar {
   background-image: none;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255,255,255,.7);
   margin-bottom: 0px;
-  border-radius: 0px; }
+  border-radius: 0px;
+}
 
 .navbar-form {
-  margin: 10px auto 0px; }
+  margin: 10px auto 0px;
+}
 
 .wrap {
   border: none;
-  margin: 0px auto 300px; }
+  margin: 0px auto 300px;
+}
 
 .content {
   margin-top: 30px;
   padding-bottom: 30px;
   border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.9); }
+  background-color: rgba(255,255,255,.9);
+}
 
 #logo {
   /* margin: 10px 100px; */
@@ -67,37 +52,48 @@ body {
   font-family: Helvetica;
   font-weight: 100;
   letter-spacing: -3px;
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 li, h1, h2, h3, p, label {
-  color: #222; }
+  color: #222;
+}
 
 #search {
   margin: 10px auto;
   border-radius: 5px;
   width: 50%;
-  display: inline-block; }
+  display: inline-block;
+}
 
 #remaining-text {
   margin: 10px auto 10px 20px;
-  display: inline-block; }
+  display: inline-block;
+}
 
 #text-input {
   height: 100px;
-  vertical-align: text-top; }
+  vertical-align: text-top;
+}
 
 #importance {
-  height: 30px; }
+  height: 30px;
+}
 
 #archive-box {
-  margin: 3px auto; }
+  margin: 3px auto;
+}
 
 input .btn {
-  padding: 0px; }
+  padding: 0px;
+}
+
+
 
 ul#projects {
   padding-left: 0px;
-  list-style-type: none; }
+  list-style-type: none;
+}
 
 .project {
   margin: 20px auto;
@@ -105,72 +101,92 @@ ul#projects {
   font-size: 16px;
   line-height: 40px;
   font-weight: 200;
-  border-bottom: #999 solid 1px; }
+  border-bottom: #999 solid 1px;
+}
 
 #myForm, .archived, .bottom-section {
-  max-width: 800px; }
+  max-width: 800px;
+}
 
 #myForm .content {
-  padding: 20px; }
+  padding: 20px;
+}
 
 /* app css stylesheet */
+
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
   margin-bottom: 2em;
-  padding: 0 0 0.5em; }
-  .menu:before {
-    content: "["; }
-  .menu:after {
-    content: "]"; }
+  padding: 0 0 0.5em;
+  &:before {
+  	content: "[";
+  }
+  &:after {
+	content: "]";
+  }
+}
 
 .menu > li {
-  display: inline; }
+  display: inline;
+}
 
 .menu > li:before {
   content: "|";
-  padding-right: 0.3em; }
+  padding-right: 0.3em;
+}
 
 .menu > li:nth-child(1):before {
   content: "";
-  padding: 0; }
+  padding: 0;
+}
 
 .done-true, .done-true a {
   text-decoration: line-through;
-  color: #666; }
+  color: #666;
+}
 
 .spinner-container {
   margin: 0px auto;
-  width: 100%; }
+  width: 100%;
+}
 
 .spinner {
   width: 20%;
   margin-top: 150px;
   display: block;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+}
 
 #about {
-  text-align: center; }
-  #about .btn {
-    margin-top: 50px; }
-  #about p, #about p a {
-    color: #ffffff; }
-  #about h1 {
-    margin-top: 10%;
-    font-size: 100px;
-    letter-spacing: -16px;
-    color: #ffffff; }
+	text-align: center;
+	.btn {
+	  margin-top: 50px;
+	}
+	p, p a {
+	  color: #ffffff;
+	}
+	h1 {
+	  margin-top: 10%;
+	  font-size: 100px;
+	  letter-spacing: -16px;
+	  color: #ffffff;
+	}
+}
+
 
 @media (max-width: 768px) {
-  body {
-    background-size: cover; }
-
-  #search {
-    width: 100%; }
-
+  body { 
+  	background-size: cover; 
+  }
+  #search { 
+  	width: 100%; 
+  }
   .navbar {
-    text-align: center; }
+    text-align: center;
+  }
+  #remaining-text { margin: 0px; }
+}
 
-  #remaining-text {
-    margin: 0px; } }
+
