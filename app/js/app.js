@@ -9,7 +9,6 @@ var app = window.app = angular.module('lean', [
   'ui.showhide'
   ]);
 
-
 app.
   value('fbURL', 'https://lean.firebaseio.com/users/').
   factory('fireFactory', [

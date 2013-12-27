@@ -1,25 +1,52 @@
-<div class="row" >
+<div class="row" ng-show="!spinner">
   <div class="col-xs-12" id="myForm">
 
     <form name="myForm" role="form" class="form-horizontal content">
       <div class="form-group" ng-class="{error: myForm.project.$invalid}">
         <label class="col-sm-2 col-sm-offset-1 control-label">Project</label>
         <div class="col-sm-7 col-sm-offset-1">
-          <input type="text" class="form-control" name="project" ng-model="project.project" required>
+          <input type="text" placeholder="Life Goals" class="form-control" name="project" ng-model="project.project" required>
         </div>
         <div class="col-sm-1"></div>
-        <span ng-show="myForm.name.$error.required" class="help-inline">
-            Required</span>
+        <!-- <span ng-show="myForm.project.$error.required" class="help-inline">
+            Required</span> -->
       </div>
      
       <div class="form-group" ng-class="{error: myForm.task.$invalid}">
         <label class="col-sm-2 col-sm-offset-1 control-label">Task</label>
         <div class="col-sm-7 col-sm-offset-1">
-          <input class="form-control" type="text" name="task" ng-model="project.task" required>
+          <input class="form-control" placeholder="Become the Dragon Reborn" type="text" name="task" ng-model="project.task" required>
         </div>
         <div class="col-sm-1"></div>
-        <span ng-show="myForm.site.$error.required" class="help-inline">
-            Required</span>
+        <!-- <span ng-show="myForm.task.$error.required" class="help-inline">
+            Required</span> -->
+      </div>
+
+      <div class="form-group" ng-class="{error: myForm.due.$invalid}">
+        <label class="col-sm-2 col-sm-offset-1 control-label">Due</label>
+        <div class="col-sm-7 col-sm-offset-1">
+          <input class="form-control"  type="date" name="due" ng-model="project.due">
+        </div>
+        <div class="col-sm-1"></div>
+      </div>
+
+       <div class="form-group" ng-class="{error: myForm.estimated.$invalid}">
+        <label class="col-sm-2 col-sm-offset-1 control-label">Estimated Time</label>
+        <div class="col-sm-7 col-sm-offset-1">
+          <input class="form-control" placeholder="3 minutes" type="text" name="estimated" ng-model="project.estimated" required>
+        </div>
+<!--         <span ng-show="myForm.estimated.$error.required" class="help-inline">Required</span>
+ -->        <div class="col-sm-1"></div>
+      </div>
+     
+      <div class="form-group" ng-class="{error: myForm.importance.$invalid}">
+        <label class="col-sm-2 col-sm-offset-1 control-label">Importance</label>
+        <div class="col-sm-7 col-sm-offset-1">
+          <input class="form-control"  placeholder="10 (On a scale of 1-10)" type="number" name="importance" id="importance" ng-model="project.importance" min="0" max="10" required>
+        </div>
+        <div class="col-sm-1"></div>
+        <!-- <span ng-show="myForm.importance.$error.required" class="help-inline">
+            Required</span> -->
       </div>
 
       <div class="form-group" ng-class="{error: myForm.note.$invalid}">
@@ -29,49 +56,22 @@
         </div>
         <div class="col-sm-1"></div>
       </div>
-
-       <div class="form-group" ng-class="{error: myForm.estimated.$invalid}">
-        <label class="col-sm-2 col-sm-offset-1 control-label">Estimated Time</label>
-        <div class="col-sm-7 col-sm-offset-1">
-          <input class="form-control" type="text" name="estimated" ng-model="project.estimated" required>
-        </div>
-        <span ng-show="myForm.site.$error.required" class="help-inline">Required</span>
-        <div class="col-sm-1"></div>
-      </div>
-     
-      <div class="form-group" ng-class="{error: myForm.due.$invalid}">
-        <label class="col-sm-2 col-sm-offset-1 control-label">Due</label>
-        <div class="col-sm-7 col-sm-offset-1">
-          <input class="form-control"  type="date" name="due" ng-model="project.due">
-        </div>
-        <div class="col-sm-1"></div>
-      </div>
-
-      <div class="form-group" ng-class="{error: myForm.timeFrame.$invalid}">
+<!--       <div class="form-group" ng-class="{error: myForm.timeFrame.$invalid}">
         <label class="col-sm-2 col-sm-offset-1 control-label">Time Frame</label>
         <div class="col-sm-7 col-sm-offset-1">
-          <input class="form-control"  type="text" name="timeFrame" ng-model="project.timeFrame">
+          <input class="form-control" type="text" name="timeFrame" ng-model="project.timeFrame">
         </div>
         <div class="col-sm-1"></div>
-      </div>
+      </div> -->
 
-      <div class="form-group" ng-class="{error: myForm.importance.$invalid}">
-        <label class="col-sm-2 col-sm-offset-1 control-label">Importance</label>
-        <div class="col-sm-7 col-sm-offset-1">
-          <input class="form-control"  type="number" name="importance" id="importance" ng-model="project.importance" min="0" max="10" required>
-        </div>
-        <div class="col-sm-1"></div>
-        <span ng-show="myForm.site.$error.required" class="help-inline">
-            Required</span>
-      </div>
 
-      <div class="form-group" ng-class="{error: myForm.type.$invalid}">
+<!--       <div class="form-group" ng-class="{error: myForm.type.$invalid}">
         <label class="col-sm-2 col-sm-offset-1 control-label">Task Type</label>
         <div class="col-sm-7 col-sm-offset-1">
           <input class="form-control" type="text" name="type" ng-model="project.type">
         </div>
         <div class="col-sm-1"></div>
-      </div>
+      </div> -->
 
       <div class="container archived">
         <div class="row col-sm-2 col-sm-offset-1">

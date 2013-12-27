@@ -26,6 +26,13 @@
     <navbar></navbar>
 
     <div class="wrap" >
+      <div class="container">
+        <div class="row spinner-container" ng-show="spinner">
+          <div class="col-xs-12">
+            <span us-spinner="{top: center}" class="spinner"></span>  
+          </div>
+        </div>
+      </div>
       <div class="container" ng-view>
       </div>
       <div class="push">
@@ -36,7 +43,9 @@
  -->    </footer>
 
     <!-- <script src="lib/angular/angular.js"></script> -->
-    <script src="vendor/angular-ui/showhide.js"></script>
+    <script src="lib/angular-ui/showhide.js"></script>
+    <script src="lib/spin.min.js"></script>
+    <script src="lib/angular-spinner-master/angular-spinner.js"></script>
     <script src="js/controllers/listCtrl.js"></script>
     <script src="js/controllers/editCtrl.js"></script>
     <script src="js/controllers/createCtrl.js"></script>
@@ -45,7 +54,5 @@
     <script src="js/services.js"></script>
     <script src="js/filters.js"></script>
     <script src="js/directives.js"></script>
-    <script src="vendor/spin.min.js"></script>
-    <script src="vendor/angular-spinner-master/angular-spinner.js"></script>
   </body>
 </html>

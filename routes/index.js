@@ -4,7 +4,8 @@
  */
 
 exports.index = function(req, res){
-  res.render('index');
+  res.sendfile(__dirname + "/app/index"); // updated to reflect dir structure
+  // res.render('index');
 };
 
 exports.partials = function (req, res) {

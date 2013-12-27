@@ -12,7 +12,9 @@ var AuthCtrl = [
 
         $scope.name = 'AuthCtrl';
 
-        $scope.spinner = true;
+        if ($location.path() != '/') {
+            $scope.spinner = true;
+        }
 
         var baseurl = 'https://lean.firebaseio.com',
             usersurl = baseurl + '/users/';
@@ -20,7 +22,7 @@ var AuthCtrl = [
         //$scope.usersRef = angularFire(usersurl, $scope, 'users', {});
 
         $rootScope.$watch('user', function() {
-            if ($rootScope.user) {
+            if ($rootScope.user && ($location.path() == '/')) {                
                 $location.url('/u/' + $rootScope.user.username);
             }
         });

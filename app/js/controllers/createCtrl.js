@@ -3,6 +3,8 @@ var createCtrl = function ($scope, $location, $rootScope, $timeout, angularFireC
 	if ($rootScope.user) {
       fbURL = fbURL + $rootScope.user.id + '/projects/';
 	  
+      $scope.spinner = false;
+
 	  $scope.save = function() {
 		var start = Date.now();
 		$scope.project.start = start;
@@ -10,6 +12,6 @@ var createCtrl = function ($scope, $location, $rootScope, $timeout, angularFireC
 	    $location.path('/u/' + $rootScope.user.username);
 	  }
     } 
-    
+
 }
  
