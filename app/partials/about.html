@@ -7,8 +7,10 @@
 
 	  <p>A task management system. For <a href="http://www.burntfen.com">Richard</a>. By <a href="http://www.burntfen.com">Richard</a>.</p>
 
-	  <a class="btn btn-primary" ng-click="login()" ng-show="!isLoggedIn" ng-controller="AuthCtrl">
+	  <a class="btn btn-primary" ng-click="login('github')" ng-show="!isLoggedIn" ng-controller="AuthCtrl">
 	  <i class="fa fa-github"></i> Sign in with Github</a>
+	  <a class="btn btn-primary" ng-click="login('twitter')" ng-show="!isLoggedIn" ng-controller="AuthCtrl">
+	  <i class="fa fa-twitter"></i> Sign in with Twitter</a>
 	  
 	</div>
 	<div class="col-sm-3"></div>

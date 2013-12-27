@@ -84,7 +84,6 @@ var AuthCtrl = [
             var options = {
                 'rememberMe': true
             };
-            provider = 'github';
 
             if ($scope.token) {
                 console.log('login with token', $scope.token);
