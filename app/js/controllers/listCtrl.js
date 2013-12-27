@@ -10,6 +10,8 @@ var listCtrl = function ($scope, $rootScope, $filter, $location, $routeParams, $
       angularFire(fbURL + $scope.user.id + '/projects/', $scope, 'remote', {}).
         then(function() {
 
+          $scope.showProject = true;
+
           $scope.spinner = false;
 
           $scope.todos = angular.copy($scope.remote);

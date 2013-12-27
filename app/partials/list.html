@@ -7,15 +7,23 @@
   <div class="col-sm-6 content">
     
       <input type="text" ng-model="search" id="search" class="form-control" placeholder="Search">
-      <span id="remaining-text"><p>{{remaining()}} of {{unarchivedCount()}} remaining (<a ng-click="archive()" href="#/user/:userId">Archive</a>)</p></span>
+      <span id="remaining-text"><p>{{remaining()}} of {{unarchivedCount()}} remaining <button ng-click="archive()" class="btn btn-default">Archive</button></p></span>
     
-    <!-- [ <a href="" ng-click="archive()">archive</a> ] -->
+    <div class="btn-group">
+      <button ng-click="showProject =! showProject" type="button" class="{{ (showProject) && 'btn btn-info active' || 'btn btn-info'}}">Project</button>
+      <button ng-click="showImportance =! showImportance" type="button" class="{{ showImportance && 'btn btn-info active' || 'btn btn-info'}}">Importance</button>
+      <button ng-click="showDate =! showDate" type="button" class="{{ showDate && 'btn btn-info active' || 'btn btn-info'}}">Date</button>
+    </div>
+
     <ul id="projects">
       <li class="project" ng-repeat="(key, todo) in filterSecId(todos) | filter:search" >
         <input type="checkbox" ng-model="todo.done" ng-click="saveChange(todo)">
         <span class="done-{{todo.done}}">
-          <strong><a ng-click="focus(todo)">
-            {{todo.project}}</a></strong> - {{todo.task}}.
+          <a ng-click="focus(todo)" ui-toggle="showProject">
+            <strong>
+            {{todo.project}}</strong>
+          </a>
+          <span ui-toggle="showProject"> - </span> {{todo.task}}. <span class="date" ui-toggle="showDate">{{todo.due | date:'MMMM dd'}} </span> <span class="importance" ui-toggle="showImportance">{{todo.importance}}</span>
         </span>
 
       </li>

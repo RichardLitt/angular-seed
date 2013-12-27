@@ -1,6 +1,13 @@
 'use strict';
 
-var app = window.app = angular.module('lean', ['firebase', 'lean.filters', 'lean.services', 'lean.directives', 'angularSpinner']);
+var app = window.app = angular.module('lean', [
+  'firebase', 
+  'lean.filters', 
+  'lean.services', 
+  'lean.directives', 
+  'angularSpinner',
+  'ui.showhide'
+  ]);
 
 
 app.
