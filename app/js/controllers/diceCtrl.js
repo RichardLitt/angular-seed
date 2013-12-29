@@ -10,30 +10,9 @@ var diceCtrl = function ($scope, $rootScope, $filter, $location, $routeParams, $
       angularFire(fbURL + $scope.user.id + '/projects/', $scope, 'remote', {}).
         then(function() {
 
-          $scope.showProject = true;
-
           $scope.spinner = false;
 
           $scope.todos = angular.copy($scope.remote);
-
-          $scope.filterSecId = function(items) {
-            var result = {};
-            angular.forEach(items, function(value, key) {
-              if (value.archive != false) {
-                result[key] = value;
-                result[key].id = key;
-              }
-            });
-            return result;
-          };
-
-          $scope.filterKey = function(items) {
-            var result = new Array();
-            angular.forEach(items, function(key, value) {
-              result.push(value);
-            });
-            return result;
-          };
 
           $scope.chooseTodo = function(items) {
               // Make it iterable
