@@ -16,21 +16,17 @@ var listCtrl = function ($scope, $rootScope, $filter, $location, $routeParams, $
 
           $scope.todos = angular.copy($scope.remote);
 
-          var orderByImportance = $filter('orderByImportance');
-
           $scope.focus = function(todo) {
-            $scope.focused = todo;
-          }    
-
-          $scope.unfocus = function(todo) {
-            $scope.focused = '';
-          }
-
-          $scope.detailShow = function(){
-            if ($scope.focused) {
-              return $scope.focused !== '';
+            if ($scope.focused && $scope.focused == todo) {
+              $scope.focused = null
+            } else if ($scope.focused) {
+              $scope.focused = todo 
+            } else {
+              $scope.focused = todo
             }
-          }
+          }     
+          
+          // These two functions can't be right...
           
           $scope.filterSecId = function(items) {
             var result = {};
@@ -40,8 +36,7 @@ var listCtrl = function ($scope, $rootScope, $filter, $location, $routeParams, $
                 result[key].id = key;
               }
             });
-            $scope.todos = result;
-            return orderByImportance($scope.todos);
+            return result;
           }
 
           $scope.filterKey = function(items) {
@@ -50,11 +45,6 @@ var listCtrl = function ($scope, $rootScope, $filter, $location, $routeParams, $
               result.push(value);
             });
             return result;
-          }
-
-          $scope.filterTest = function(items) {
-            console.log(items);
-            return items;
           }
 
           $scope.saveChange = function(todo){
@@ -85,7 +75,6 @@ var listCtrl = function ($scope, $rootScope, $filter, $location, $routeParams, $
                 }
               }
             })
-            console.log(count);
             return count
           }
 

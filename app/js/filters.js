@@ -16,10 +16,7 @@ angular.module('lean.filters', [])
 	    Object.keys(obj).forEach(function(key) {
 	      array.push(obj[key]);
 	    });
-	    array.sort(function(a, b) {
-	    	return a.importance - b.importance;
-	    }).reverse();
-	    return array;
+	    return _.sortBy(array, function(todo){return todo.importance}).reverse();
 	  }
 	})
 
@@ -28,7 +25,6 @@ angular.module('lean.filters', [])
 			var newTodos = {};
 			angular.forEach(todos, function(value, key) {
 				if (value && value.archived && value.archived == true) {
-					console.log(value);
 					// Do nothing
 				} else {
 					newTodos[key] = value;

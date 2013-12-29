@@ -28,6 +28,10 @@ body {
   border-radius: 0px;
 }
 
+.float-right {
+  float: right;
+}
+
 .navbar-form {
   margin: 10px auto 0px;
 }
@@ -65,7 +69,7 @@ li, h1, h2, h3, p, label {
 }
 
 #remaining-text {
-  margin: 10px auto 10px 20px;
+  margin: 10px auto 0px 20px;
   display: inline-block;
   float: right;
 }
@@ -172,6 +176,26 @@ ul#projects {
 	  letter-spacing: -16px;
 	  color: #ffffff;
 	}
+}
+
+#dice {
+  .tag, hr, .task, p, h1 {
+    color: #ffffff;
+  }
+  .tag {
+    margin-top: 70px;
+    font-style: italic;
+  }
+  .task {
+    h1 {
+      padding-top: 30px;
+      padding-bottom: 30px;
+      font-size: 50px;
+    }
+    min-height: 300px;
+    padding-bottom: 30px;
+  }
+
 }
 
 .date {

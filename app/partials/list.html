@@ -9,9 +9,10 @@
       <button ng-click="showDate =! showDate" type="button" class="{{ showDate && 'btn btn-info active' || 'btn btn-info'}}">Date</button>
       <button ng-click="showImportance =! showImportance" type="button" class="{{ showImportance && 'btn btn-info active' || 'btn btn-info'}}">Importance</button>
     </div>
+    <a type="button" href="#/dice" class="float-right btn btn-default">Roll</a>
 
     <ul id="projects">
-      <li class="project" ng-repeat="(key, todo) in filterSecId(todos) | unarchived | filter:search" >
+      <li class="project" ng-repeat="(key, todo) in filterSecId(todos) | unarchived | orderByImportance | filter:search" >
         <input type="checkbox" ng-model="todo.done" ng-click="saveChange(todo)">
         <span ng-class="{done: todo.done}">
           <a ng-click="focus(todo)" ui-toggle="showProject">
@@ -24,7 +25,7 @@
       </li>
     </ul>
   </div>
-  <div class="col-sm-5 col-sm-offset-1 content" ng-show="detailShow()">
+  <div class="col-sm-5 col-sm-offset-1 content" ng-show="focused">
     <h2>{{focused.project}}</h2>
     <h3>{{focused.task}}</h3>
     <p ng-show="focused.note">Notes: {{focused.note}}</p>
@@ -38,6 +39,6 @@
     <!-- <p>Archived: {{focused.archived}}</p> -->
     <hr />
     <a href="#/edit/{{focused.id}}" class="btn btn-primary">Edit</a>
-    <a href="" ng-click="unfocus(focused.id)" class="btn btn-default">Close</a>
+    <a href="" ng-click="focus(focused.id)" class="btn btn-default">Close</a>
 </div>
 </div>

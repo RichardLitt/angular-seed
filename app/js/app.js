@@ -28,6 +28,7 @@ app.
       when('/u/:username', {controller:listCtrl, templateUrl:'partials/list.html'}).
       when('/edit/:projectId', {controller:editCtrl, templateUrl:'partials/detail.html'}).
       when('/new', {controller:createCtrl, templateUrl:'partials/detail.html'}).
+      when('/dice', {controller:diceCtrl, templateUrl:'partials/dice.html'}).
       otherwise({redirectTo:'/u/'});
     }
   ]);
