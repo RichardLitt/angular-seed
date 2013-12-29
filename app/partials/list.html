@@ -2,18 +2,18 @@
   <div class="col-sm-6 content">
     
       <input type="text" ng-model="search" id="search" class="form-control" placeholder="Search">
-      <span id="remaining-text"><p>{{remaining()}} of {{unarchivedCount()}} remaining <button ng-click="archive()" class="btn btn-default">Archive</button></p></span>
+      <span id="remaining-text"><p>{{tasksCount().leftToDo}} of {{tasksCount().allCurrentTasks}} remaining <button ng-click="archive()" class="btn btn-default">Archive</button></p></span>
     
     <div class="btn-group">
       <button ng-click="showProject =! showProject" type="button" class="{{ (showProject) && 'btn btn-info active' || 'btn btn-info'}}">Project</button>
-      <button ng-click="showImportance =! showImportance" type="button" class="{{ showImportance && 'btn btn-info active' || 'btn btn-info'}}">Importance</button>
       <button ng-click="showDate =! showDate" type="button" class="{{ showDate && 'btn btn-info active' || 'btn btn-info'}}">Date</button>
+      <button ng-click="showImportance =! showImportance" type="button" class="{{ showImportance && 'btn btn-info active' || 'btn btn-info'}}">Importance</button>
     </div>
 
     <ul id="projects">
-      <li class="project" ng-repeat="(key, todo) in filterSecId(todos) | filter:search" >
+      <li class="project" ng-repeat="(key, todo) in filterSecId(todos) | unarchived | filter:search" >
         <input type="checkbox" ng-model="todo.done" ng-click="saveChange(todo)">
-        <span class="done-{{todo.done}}">
+        <span ng-class="{done: todo.done}">
           <a ng-click="focus(todo)" ui-toggle="showProject">
             <strong>
             {{todo.project}}</strong>

@@ -72,21 +72,20 @@ var listCtrl = function ($scope, $rootScope, $filter, $location, $routeParams, $
             $scope.todoText = '';
           }
 
-          $scope.remaining = function() {
-            var count = 0;
+          $scope.tasksCount = function() {
+            var count = {
+              'allCurrentTasks': 0,
+              'leftToDo': 0
+            }
             angular.forEach($scope.todos, function(todo) {
-              count += todo.done && ! todo.archive ? 0 : 1;
-            });
-            return count;
-          }
-
-          $scope.unarchivedCount = function() {
-            var count = 0;
-            angular.forEach($scope.todos, function(todo) {
-              if (!todo.archive) {
-                count += 1;
-              };
+              if (!todo.archived) {
+                count.allCurrentTasks += 1;
+                if (!todo.done) {
+                    count.leftToDo += 1;
+                }
+              }
             })
+            console.log(count);
             return count
           }
 
@@ -94,7 +93,10 @@ var listCtrl = function ($scope, $rootScope, $filter, $location, $routeParams, $
             var oldTodos = $scope.todos;
             $scope.todos = {};
             angular.forEach(oldTodos, function(value, key) {
-              if (!value.done) {
+              if (!value["done"]) {
+                $scope.todos[key] = value;
+              } else {
+                value["archived"] = true;
                 $scope.todos[key] = value;
               }
             }, $scope.todos);

@@ -20,4 +20,20 @@ angular.module('lean.filters', [])
 	    	return a.importance - b.importance;
 	    }).reverse();
 	    return array;
-	}});
+	  }
+	})
+
+	.filter('unarchived', function() {
+		return function(todos) {
+			var newTodos = {};
+			angular.forEach(todos, function(value, key) {
+				if (value && value.archived && value.archived == true) {
+					console.log(value);
+					// Do nothing
+				} else {
+					newTodos[key] = value;
+				}
+            });
+            return newTodos;
+		}
+	});
