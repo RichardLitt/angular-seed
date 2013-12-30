@@ -21,7 +21,11 @@ var diceCtrl = function ($scope, $rootScope, $filter, $location, $routeParams, $
                 array.push(items[key]);
               });
               // Sort by importance in reverse
-              array = _.sortBy(array, function(todo){return todo.importance}).reverse();
+              array = _.sortBy(array, function(todo){
+                if (!todo.done) {
+                  return todo.importance
+                }
+              }).reverse();
               // For a ranking, from ten down
               for (var i = 10; i > -1; i--) {
                 // Find all items in that ranking, then break
