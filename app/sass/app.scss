@@ -107,6 +107,18 @@ ul#projects {
   border-bottom: #999 solid 1px;
 }
 
+.hide-icon {
+  float: right;
+  margin-top: 14px;
+  margin-left: 5px;
+  font-size: 12px;
+  color: #999;
+  &:hover {
+    color: #333;
+  }
+}
+
+
 #myForm, .archived, .bottom-section {
   max-width: 800px;
 }

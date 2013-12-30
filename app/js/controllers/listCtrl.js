@@ -25,6 +25,17 @@ var listCtrl = function ($scope, $rootScope, $filter, $location, $routeParams, $
               $scope.focused = todo
             }
           }     
+
+          $scope.hide = function(todo) {
+            return todo.hide = !todo.hide;
+          }
+
+          $scope.unhideAll = function(todos) {
+            angular.forEach(todos, function(value, key) {
+              value.hide = null;
+            })
+            return todos;
+          }
           
           // These two functions can't be right...
           
@@ -82,6 +93,7 @@ var listCtrl = function ($scope, $rootScope, $filter, $location, $routeParams, $
             var oldTodos = $scope.todos;
             $scope.todos = {};
             angular.forEach(oldTodos, function(value, key) {
+              value.hide = null;
               if (!value["done"]) {
                 $scope.todos[key] = value;
               } else {

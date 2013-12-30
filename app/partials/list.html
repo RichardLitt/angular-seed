@@ -8,20 +8,26 @@
       <button ng-click="showProject =! showProject" type="button" class="{{ (showProject) && 'btn btn-info active' || 'btn btn-info'}}">Project</button>
       <button ng-click="showDate =! showDate" type="button" class="{{ showDate && 'btn btn-info active' || 'btn btn-info'}}">Date</button>
       <button ng-click="showImportance =! showImportance" type="button" class="{{ showImportance && 'btn btn-info active' || 'btn btn-info'}}">Importance</button>
+      <button ng-click="showHideIcon =! showHideIcon" type="button" class="{{ showHideIcon && 'btn btn-info active' || 'btn btn-info'}}">Hide</button>
     </div>
-    <a type="button" href="#/dice" class="float-right btn btn-default">Roll</a>
+
+    <div class="btn-group float-right">
+      <a type="button" href="#/dice" class="btn btn-default">Roll</a>
+      <button ng-click="unhideAll(todos)" class="btn btn-default" type="button">Unhide</button>
+    </div>
 
     <ul id="projects">
-      <li class="project" ng-repeat="(key, todo) in filterSecId(todos) | unarchived | orderByImportance | filter:search" >
+      <li class="project" ng-repeat="(key, todo) in filterSecId(todos) | unarchived | orderByImportance | filter:search" ng-hide="todo.hide">
         <input type="checkbox" ng-model="todo.done" ng-click="saveChange(todo)">
         <span ng-class="{done: todo.done}">
           <a ng-click="focus(todo)" ui-toggle="showProject">
             <strong>
-            {{todo.project}}</strong>
+              {{todo.project}}
+            </strong>
           </a>
-          <span ui-toggle="showProject"> - </span> {{todo.task}}. <span class="date" ui-toggle="showDate">{{todo.due | date:'MMMM dd'}} </span> <span class="importance" ui-toggle="showImportance">{{todo.importance}}</span>
-        </span>
+          <span ui-toggle="showProject"> - </span> <span class="task">{{todo.task}}</span>. <span class="date" ui-toggle="showDate">{{todo.due | date:'MMMM dd'}} </span>  <i ng-show="showHideIcon" class="hide-icon fa fa-eye-slash fa-fw" ng-click="hide(todo)"></i> <span class="importance" ui-toggle="showImportance">{{todo.importance}}</span>
 
+        </span>
       </li>
     </ul>
   </div>
