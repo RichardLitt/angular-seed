@@ -2,7 +2,7 @@
   <div class="col-sm-6 content">
     
       <input type="text" ng-model="search" id="search" class="form-control" placeholder="Search">
-      <span id="remaining-text"><p>{{tasksCount().leftToDo}} of {{tasksCount().allCurrentTasks}} remaining <button ng-click="archive()" class="btn btn-default">Archive</button></p></span>
+      <span id="remaining-text"><p>{{tasksCount().leftToDo}} of {{tasksCount().allCurrentTasks}} remaining</p></span>
     
     <div class="btn-group">
       <button ng-click="showProject =! showProject" type="button" class="{{ (showProject) && 'btn btn-info active' || 'btn btn-info'}}">Project</button>
@@ -14,6 +14,7 @@
     <div class="btn-group float-right">
       <a type="button" href="#/dice" class="btn btn-default">Roll</a>
       <button ng-click="unhideAll(todos)" class="btn btn-default" type="button">Unhide</button>
+      <button ng-click="archive()" class="btn btn-default">Archive</button>
     </div>
 
     <ul id="projects">
@@ -34,7 +35,7 @@
   <div class="col-sm-5 col-sm-offset-1 content" ng-show="focused">
     <h2>{{focused.project}}</h2>
     <h3>{{focused.task}}</h3>
-    <p ng-show="focused.note">Notes: {{focused.note}}</p>
+    <p ng-show="focused.note">Notes: <span ng-bind-html-unsafe="focused.note | noHTML | newlines"></span></p>
     <p ng-show="focused.due">Due: {{focused.due}}</p>
     <p ng-show="focused.timeframe">Timeframe: {{focused.timeframe}}</p>
     <p>Importance {{focused.importance}}</p>
