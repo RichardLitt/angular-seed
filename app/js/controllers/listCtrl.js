@@ -27,13 +27,15 @@ var listCtrl = function ($scope, $rootScope, $filter, $location, $routeParams, $
           }     
 
           $scope.hide = function(todo) {
-            return todo.hide = !todo.hide;
+            todo.hide = !todo.hide;
+            $scope.remote = angular.copy($scope.todos);
           }
 
           $scope.unhideAll = function(todos) {
             angular.forEach(todos, function(value, key) {
               value.hide = null;
             })
+            $scope.remote = angular.copy($scope.todos);
             return todos;
           }
           
