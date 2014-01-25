@@ -116,6 +116,9 @@ var listCtrl = function ($scope, $rootScope, $filter, $location, $routeParams, $
           };
         }
       );
+    } else {
+      $scope.spinner = false;
+      $location.path('/');
     }
   })
 }

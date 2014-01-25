@@ -10,6 +10,8 @@ var AuthCtrl = [
 
     function AuthCtrl($scope, $rootScope, $location, angularFire, fireFactory, $route) {
 
+        $scope.spinner = false;
+
         $scope.name = 'AuthCtrl';
 
         if ($location.path() != '/') {
