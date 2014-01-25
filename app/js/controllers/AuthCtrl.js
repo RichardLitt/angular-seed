@@ -10,12 +10,16 @@ var AuthCtrl = [
 
     function AuthCtrl($scope, $rootScope, $location, angularFire, fireFactory, $route) {
 
-        $scope.spinner = false;
-
         $scope.name = 'AuthCtrl';
 
+        $rootScope.$watch('spinner', function() {
+            $scope.spinner = $rootScope.spinner;
+        })
+
+        $rootScope.spinner = false;
+        
         if ($location.path() != '/') {
-            $scope.spinner = true;
+            $rootScope.spinner = true;
         }
 
         var baseurl = 'https://lean.firebaseio.com',
@@ -24,7 +28,7 @@ var AuthCtrl = [
         //$scope.usersRef = angularFire(usersurl, $scope, 'users', {});
 
         $rootScope.$watch('user', function() {
-            if ($rootScope.user && ($location.path() == '/')) {                
+            if ($rootScope.user && ($location.path() == '/')) {   
                 $location.url('/u/' + $rootScope.user.username);
             }
         });
@@ -33,12 +37,10 @@ var AuthCtrl = [
         $scope.authCallback = function(error, user) {
             if (error) {
                 console.log('error: ', error.code);
-                /*if (error.code === 'EXPIRED_TOKEN') {
-                    $location.path('/');
-                }*/
+                // if (error.code === 'EXPIRED_TOKEN') {
+                //     $location.path('/');
+                // }
             } else if (user) {
-
-                $scope.spinner = false;
 
                 $scope.$apply( 
                     $rootScope.user = user 
@@ -80,6 +82,12 @@ var AuthCtrl = [
         };
 
         var authClient = new FirebaseSimpleLogin(fireFactory.firebaseRef(''), $scope.authCallback);
+
+        $scope.$watch(function() { return $location.path(); }, function(newValue, oldValue){  
+            if ($scope.isLoggedIn == false && newValue != '/'){  
+                    $location.path('/');  
+            }  
+        });
 
         $scope.login = function(provider) {
             $scope.token = localStorage.getItem('token');

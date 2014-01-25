@@ -29,6 +29,23 @@ app.
       when('/edit/:projectId', {controller:editCtrl, templateUrl:'partials/detail.html'}).
       when('/new', {controller:createCtrl, templateUrl:'partials/detail.html'}).
       when('/dice', {controller:diceCtrl, templateUrl:'partials/dice.html'}).
-      otherwise({redirectTo:'/u/'});
+      otherwise({redirectTo:'/'});
     }
-  ]);
+  ])
+
+  // .run( function($rootScope, $location) {
+
+  //   // register listener to watch route changes
+  //   $rootScope.$on( "$locationChangeStart", function(event, next, current) {
+  //     if ( !$rootScope.user ) {
+  //       // no logged user, we should be going to #login
+  //       if ( next.templateUrl == "partials/about.html" ) {
+  //         // already going to #login, no redirect needed
+  //       } else {
+  //         // not going to #login, we should redirect now
+  //         $location.path( "/" );
+  //       }
+  //     }         
+  //   });
+ // })
+;

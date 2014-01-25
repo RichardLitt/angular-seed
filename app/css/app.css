@@ -103,6 +103,9 @@ ul#projects {
 #myForm .content {
   padding: 20px; }
 
+#secondary-nav {
+  margin-top: 10px; }
+
 /* app css stylesheet */
 .menu {
   list-style: none;
@@ -192,6 +195,9 @@ ul#projects {
 .ui-hide {
   display: none; }
 
+@media (min-width: 1200px) {
+  #secondary-nav {
+    margin-top: 0px; } }
 @media (max-width: 768px) {
   body {
     background-size: cover; }

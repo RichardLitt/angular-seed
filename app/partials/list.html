@@ -1,21 +1,27 @@
-<div class="row" ng-show="!spinner">
+<div class="row" ng-show="!spinner && todos">
   <div class="col-sm-6 content">
     
-      <input type="text" ng-model="search" id="search" class="form-control" placeholder="Search">
+    <input type="text" ng-model="search" id="search" class="form-control" placeholder="Search">
+    <!-- A knight never counts his enemies.     
       <span id="remaining-text"><p>{{tasksCount().leftToDo}} of {{tasksCount().allCurrentTasks}} remaining</p></span>
-    
-    <div class="btn-group">
-      <button ng-click="showProject =! showProject" type="button" class="{{ (showProject) && 'btn btn-info active' || 'btn btn-info'}}">Project</button>
-      <button ng-click="showDate =! showDate" type="button" class="{{ showDate && 'btn btn-info active' || 'btn btn-info'}}">Date</button>
-      <button ng-click="showImportance =! showImportance" type="button" class="{{ showImportance && 'btn btn-info active' || 'btn btn-info'}}">Importance</button>
-      <button ng-click="showHideIcon =! showHideIcon" type="button" class="{{ showHideIcon && 'btn btn-info active' || 'btn btn-info'}}">Hide</button>
-    </div>
-
-    <div class="btn-group float-right">
-      <a type="button" href="#/dice" class="btn btn-default">Roll</a>
-      <button ng-click="unhideAll(todos)" class="btn btn-default" type="button">Unhide</button>
-      <button ng-click="archive()" class="btn btn-default">Archive</button>
-    </div>
+    -->    
+      <div class="row">
+        <div class="col-lg-7">
+          <div class="btn-group" id="primary-nav">
+            <button ng-click="showProject =! showProject" type="button" class="{{ (showProject) && 'btn btn-info active' || 'btn btn-info'}}">Project</button>
+            <button ng-click="showDate =! showDate" type="button" class="{{ showDate && 'btn btn-info active' || 'btn btn-info'}}">Date</button>
+            <button ng-click="showImportance =! showImportance" type="button" class="{{ showImportance && 'btn btn-info active' || 'btn btn-info'}}">Importance</button>
+            <button ng-click="showHideIcon =! showHideIcon" type="button" class="{{ showHideIcon && 'btn btn-info active' || 'btn btn-info'}}">Hide</button>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="btn-group" id="secondary-nav">
+            <a type="button" href="#/dice" class="btn btn-default">Roll</a>
+            <button ng-click="unhideAll(todos)" class="btn btn-default" type="button">Unhide</button>
+            <button ng-click="archive()" class="btn btn-default">Archive</button>
+          </div>
+        </div>
+      </div>
 
     <ul id="projects">
       <li class="project" ng-repeat="(key, todo) in filterSecId(todos) | unarchived | orderByImportance | filter:search" ng-hide="todo.hide">
@@ -47,5 +53,5 @@
     <hr />
     <a href="#/edit/{{focused.id}}" class="btn btn-primary">Edit</a>
     <a href="" ng-click="focus(focused.id)" class="btn btn-default">Close</a>
-</div>
+  </div>
 </div>
