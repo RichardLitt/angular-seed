@@ -1,5 +1,7 @@
 ### Lean
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/RichardLitt/lean.svg)](https://greenkeeper.io/)
+
 This is a time tracking and time management program. It is currently in developer.
 
 Forked from angular/angular-seed. Server using Firebase. Run on Node and AngularJS. 
